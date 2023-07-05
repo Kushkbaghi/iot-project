@@ -105,7 +105,7 @@ Here's why [Adafruit IO ](https://io.adafruit.com/) has been chosen:
 
 Comparison with Other Platforms
 
-We also considered other platforms like Thingspeak and Datacake. Thingspeak is a popular choice for IoT projects and has similar features to Adafruit IO, but we found Adafruit IO's interface to be more intuitive.
+I also considered other platforms like Thingspeak and Datacake. Thingspeak is a popular choice for IoT projects and has similar features to Adafruit IO, but I found Adafruit IO's interface to be more intuitive.
 
 ## The code:
 
