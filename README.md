@@ -88,6 +88,8 @@ VCC: Connect the VCC pin on the MQ-135 sensor to the VBUS or VSYS pin on the Ras
 GND: Connect the GND (ground) pin on the MQ-135 sensor to a GND pin on the Raspberry Pi Pico. This completes the power circuit for the sensor.
 
  AO: Connect the AO pin on the MQ-135 sensor to one of the ADC (analog to digital converter) pins on the Raspberry Pi Pico (GP26, GP27, GP28, or GP29). This allows the Pico to read the analog output from the sensor.
+![Circuit diagram hand drawn](./images/IMG_4005 2.JPG)
+
 
 ## Choice of platform:
 
@@ -107,9 +109,9 @@ Comparison with Other Platforms
 
 I also considered other platforms like Thingspeak and Datacake. Thingspeak is a popular choice for IoT projects and has similar features to Adafruit IO, but I found Adafruit IO's interface to be more intuitive.
 
-## The code:
+## The [code](https://github.com/Kushkbaghi/iot-project/blob/main/script.py):
 
-### Importing the required modules:
+Importing the required modules:
 
 - Network: Module for managing network connectivity.
 - Time: Module for working with time-related operations.
@@ -117,25 +119,25 @@ I also considered other platforms like Thingspeak and Datacake. Thingspeak is a 
 - Umqtt.simple: Module for MQTT communication using the simple client implementation.
 - Machine: Module for interacting with hardware components, such as ADC (Analog-to-Digital Converter) and pins.
 
-### connect_wifi() function:
+connect_wifi() function:
 
 - Activates the Wi-Fi interface (WLAN).
 - Connects to the Wi-Fi network using the provided SSID and password from the config module.
 - Checks the connection status repeatedly for a limited time (10 seconds), waiting for the connection to be established.
 - Raises an error if the connection fails, or returns the IP address if the connection is successful.
-
-### connect_mqtt() function:
+  
+connect_mqtt() function:
 
 - Creates an MQTT client with the specified client ID (config.CLIENT_ID) and connects it to the Adafruit IO MQTT broker using the provided username, password, and port.
 - Returns the MQTT client object.
 
-### publish_data() function:
+publish_data() function:
 
 - Takes the MQTT client and data as arguments.
 - Constructs the MQTT topic using the Adafruit IO username and feed name from the config module.
 - Publishes the data to the constructed topic using the MQTT client's publish() method.
 
-### Main code execution:
+Main code execution:
 
 - Calls connect_wifi() to establish a Wi-Fi connection and retrieves the IP address.
 - Calls connect_mqtt() to create and connect an MQTT client.
