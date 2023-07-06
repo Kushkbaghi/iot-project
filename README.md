@@ -40,7 +40,7 @@ This device can give basic information about the air around us. For instance, it
 | -------------------- | -------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
 | Breadboard           | 1        | Serves as a base for connecting electronic components in a circuit | €7,42 [Breadboard](https://eu.robotshop.com/products/830-tie-point-interlocking-solderless-breadboard-osepp) |
 | Micro USB cable      | 1        | Power source & for uploading MicroPython script to the board       | €10.18 [cable](https://www.kjell.com/se/produkter/kablar-kontakter/usb-kablar/micro-usb-kabel-1-m-p68687)    |
-| MQ135                | 1        | Gas sensor                                                         | €6,79 [MQ135](https://eu.robotshop.com/products/mq-135-gas-sensor)                                           |
+| MQ135                | 1        | Gas sensor- device that can detect various harmful gases and smoke in the ai                                                       | €6,79 [MQ135](https://eu.robotshop.com/products/mq-135-gas-sensor)                                           |
 | Raspberry Pi Pico WH | 1        | The microcontroller board                                          | €10 [Raspberry Pi Pico](https://www.electrokit.com/produkt/raspberry-pi-pico-wh/)                            |
 | Jumper Wires         | 4        | Making connections between the Raspberry Pi and the sensor         | €5 [wires](https://www.electrokit.com/produkt/labbsladd-40-pin-30cm-hane-hane/)                              |
 | Total                |          |                                                                    | €39.39                                                                                                       |
@@ -51,7 +51,7 @@ This device can give basic information about the air around us. For instance, it
 
 ### Thonny
 
-For this project, Thonny has been used. Thonny is a Python Integrated Development Environment (IDE). Thonny is available for Windows, macOS, and Linux. In this case, it has been installed on macOS using Homebrew.
+For this project, [Thonny](https://thonny.org/) has been used. Thonny is a Python Integrated Development Environment (IDE). Thonny is available for Windows, macOS, and Linux. In this case, it has been installed on macOS using Homebrew.
 Following steps shows how to install the Thonny:
 
 1.  Open the Terminal app on your Mac.
@@ -88,8 +88,9 @@ VCC: Connect the VCC pin on the MQ-135 sensor to the VBUS or VSYS pin on the Ras
 GND: Connect the GND (ground) pin on the MQ-135 sensor to a GND pin on the Raspberry Pi Pico. This completes the power circuit for the sensor.
 
  AO: Connect the AO pin on the MQ-135 sensor to one of the ADC (analog to digital converter) pins on the Raspberry Pi Pico (GP26, GP27, GP28, or GP29). This allows the Pico to read the analog output from the sensor.
-![Circuit diagram hand drawn](./images/IMG_4005 2.JPG)
 
+### Circuit diagram hand drawn
+![](./images/IMG_4005%202.JPG)
 
 ## Choice of platform:
 
@@ -109,9 +110,9 @@ Comparison with Other Platforms
 
 I also considered other platforms like Thingspeak and Datacake. Thingspeak is a popular choice for IoT projects and has similar features to Adafruit IO, but I found Adafruit IO's interface to be more intuitive.
 
-## The [code](https://github.com/Kushkbaghi/iot-project/blob/main/script.py):
-
-Importing the required modules:
+## The code: 
+> [Read the code: ](https://github.com/Kushkbaghi/iot-project/blob/main/script.py):
+Importing the required modules: 
 
 - Network: Module for managing network connectivity.
 - Time: Module for working with time-related operations.
@@ -149,50 +150,45 @@ Main code execution:
 - Sleeps for 5 seconds before repeating the loop.
 - Overall, the code sets up a Wi-Fi connection, establishes an MQTT connection, reads the gas level value from the sensor, and publishes it to Adafruit IO via MQTT at regular intervals.
 
+Security
+
+To increase the security of MicroPython script, created a combination of a config.py file and environment variables for storing sensitive information such as Wi-Fi credentials and MQTT authentication details.
+
 ## Transmitting the data / connectivity:
 
-The data can be transmitted via Wi-Fi using protocols such as MQTT.
-The frequency of data transmission can be configured based on your requirements.
-MQTT protocol is used for efficient data transfer.
-
-## Presenting the data:
-
-Use a dashboard to present the temperature and humidity data.
-Visualize the data with charts and graphs.
-Store the data in a database for analysis and long-term preservation.
-
-## Finalizing the design:
-
-Showcase the final results of the project, including pictures and a video presentation.
-Share your thoughts on the project, reflecting on what could have been done differently or improved.
-
-## Security
-
-To increase the security of  MicroPython script, created a combination of a config.py file and environment variables for storing sensitive information such as Wi-Fi credentials and MQTT authentication details.
-
-## Transmitting the data / connectivity
-
-### Connectivity:
+Connectivity:
 
 - Connect Raspberry Pi Pico to Wi-Fi using provided SSID and password.
 - connect_wifi() establishes Wi-Fi connection, handles reconnection attempts, and returns IP address.
 
-### Data Transmission:
+Data Transmission:
 
 - Use MQTT protocol to transmit data to Adafruit IO platform.
 - connect_mqtt() creates MQTT client, connects to Adafruit IO broker, and returns client object.
 - publish_data() publishes data to Adafruit IO using MQTT client.
 - Read analog value from sensor, convert to string, and publish to Adafruit IO at regular intervals.
 
-### Overall Functionality:
+Overall Functionality:
 
 - Continuously read sensor value and publish to Adafruit IO over Wi-Fi using MQTT.
 - Reliable Wi-Fi connection, MQTT connection to Adafruit IO, and periodic data publishing.
  - Monitor and visualize data on Adafruit IO dashboard or access from subscribed clients.
 
-## Presenting the data
+## Presenting the data:
+The gas sensor data is visualized using Adafruit charts and graphs, providing easy-to-understand representations. The data is also stored in a database for analysis and long-term preservation.
 
-The data from the MQ-135 sensor is presented on a dashboard in Adafruit IO. The dashboard is built using Adafruit IO's user-friendly interface, which allows you to create customizable blocks to display your data.
+Implement the following features for the MQ-135 gas sensor:
+
+- Configure the sensor to send data to the Adafruit platform every 5 seconds.
+- Display the gas level on a two-line chart, providing a visual representation of the gas concentration over time.
+- Utilize a circular diagram to illustrate the maximum and minimum gas levels recorded.
+
+By incorporating these features, the dashboard will provide a comprehensive view of the environmental gas data, enabling analysis and monitoring of gas levels in real-time.
+
+![Adafruit IO chart](./images/Screenshot%202023-07-04%20at%2022.49.00.png)
+
+![Adafruit IO chart](./images/Screenshot%202023-07-04%20at%2022.49.12.png)
+
 
 Here's how it works:
 
@@ -213,11 +209,6 @@ Reflecting on the process, the project was a success, but there were areas that 
 Overall, this project is a good starting point for anyone interested in IoT and air quality monitoring.
 
 ## Images
-
-![Adafruit IO chart](./images/Screenshot%202023-07-04%20at%2022.49.00.png)
-
-![Adafruit IO chart](./images/Screenshot%202023-07-04%20at%2022.49.12.png)
-
 ![](./images/IMG_0246.JPG)
 ![](./images/IMG_0247.JPG)
 ![](./images/IMG_0249.JPG)
