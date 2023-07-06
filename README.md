@@ -5,8 +5,9 @@
 ---
 
 ## Short project overview
+This project focuses on building a basic Air Quality Monitoring System using the MQ135 sensor and Raspberry Pi Pico W. The main objective is to provide an accessible and affordable solution for monitoring air quality. The project is motivated by the increasing concern for environmental health and the need for easily available air quality data.
 
-How much time it might take to do (approximation)?
+## How much time it might take to do (approximation)?
 
         About 28 hours
 
@@ -68,6 +69,14 @@ Following steps shows how to install the Thonny:
         thonny --version
 
 5.  In Thonny, the following steps should be done:
+
+> Note: Prerequisites:
+        Before starting this project, make sure you have the following software installed on your system:
+        Node.js: Node.js is required for running the backend server and handling the data visualization. You can download Node.js from the official website and follow the installation instructions specific to your operating system.
+        Micropython: Micropython is needed for programming the Raspberry Pi Pico W board. You can download Micropython from the official Micropython website and flash it onto the board following the provided instructions.
+> Having Node.js and Micropython installed will ensure that you can successfully run and program the Air Quality Monitoring System.
+
+
 
 ## Computer setup:
 
